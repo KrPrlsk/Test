@@ -1,4 +1,7 @@
- <html>
+ <?php
+session_start();
+?>
+<html>
   <!DOCTYPE html>
  <html lang="en">
  <head>
@@ -13,7 +16,12 @@
          </table>
          <input type="submit" name="my_form_submit_button" value="Login"/>
      </form>
-
+  <?php
+  if ($_SESSION['message']) {
+  echo '<p class="msg"> ' . $_SESSION['message'] . ' </p>';
+  }
+  unset($_SESSION['message']);
+  ?>
      <form method ="link" action="register.php">
          <input type="submit" value="Register"/>
      </form>
