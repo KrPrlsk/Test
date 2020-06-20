@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <html>
 <!DOCTYPE html>
  <html lang="en">
@@ -17,7 +20,12 @@
             </td></tr>
         </table>
     </form>
-
+ <?php
+            if ($_SESSION['message']) {
+                echo '<p class="msg"> ' . $_SESSION['message'] . ' </p>';
+            }
+            unset($_SESSION['message']);
+        ?>
     <form method ="get" action="index.php">
         <input type="submit" value="Try to login" />
     </form>
