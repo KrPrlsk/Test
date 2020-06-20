@@ -6,7 +6,7 @@ session_start();
         $SQL = "INSERT INTO users (username, passwordHash) VALUES ('" . $username . "','" . $password . "')";
         $result = mysql_query($SQL);
         $_SESSION['message'] = 'Регистрация прошла успешно!';
-        header('Location: ../index.php');
+        header('Location: index.php');
 
     }
 
@@ -31,7 +31,7 @@ session_start();
             setcookie('islogged',false);
             setcookie('id',false);
             $_SESSION['message'] = 'Не верный логин или пароль';
-        header('Location: ../index.php');
+        header('Location: index.php');
 
         }
 
