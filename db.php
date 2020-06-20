@@ -1,9 +1,13 @@
 <?php
+session_start();
     include 'db_connection.php';
 
     function createUser($username, $password){
         $SQL = "INSERT INTO users (username, passwordHash) VALUES ('" . $username . "','" . $password . "')";
         $result = mysql_query($SQL);
+        $_SESSION['message'] = 'Регистрация прошла успешно!';
+        header('Location: ../index.php');
+
     }
 
     function isUserValid($username,$password){
@@ -26,7 +30,9 @@
             setcookie('login', false);
             setcookie('islogged',false);
             setcookie('id',false);
-            echo "Wrong Username or Password, try again!";
+            $_SESSION['message'] = 'Не верный логин или пароль';
+        header('Location: ../index.php');
+
         }
 
     }
